@@ -255,3 +255,6 @@ coverage*.info
 _NCrunch_*
 .*crunch*.local.xml
 nCrunchTemp_*
+
+# Chrome
+[Cc]hrome-*

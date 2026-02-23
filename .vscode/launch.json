@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Consumer",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build Consumer",
+            "program": "${workspaceFolder}/Consumer.WebApp/bin/Debug/net10.0/Consumer.WebApp.dll",
+            "cwd": "${workspaceFolder}/Consumer.WebApp",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Launch Producer",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build Producer",
+            "program": "${workspaceFolder}/Producer.WebApp/bin/Debug/net10.0/Producer.WebApp.dll",
+            "cwd": "${workspaceFolder}/Producer.WebApp",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Launch Chrome Incognito - Consumer",
+            "type": "chrome",
+            "request": "launch",
+            "url": "https://localhost:7128",
+            "webRoot": "${workspaceFolder}/Consumer.WebApp",
+            "userDataDir": "${workspaceFolder}/.vscode/chrome-consumer",
+            "runtimeArgs": ["--incognito"]
+        },
+        {
+            "name": "Launch Chrome Incognito - Producer",
+            "type": "chrome",
+            "request": "launch",
+            "url": "https://localhost:7192",
+            "webRoot": "${workspaceFolder}/Producer.WebApp",
+            "userDataDir": "${workspaceFolder}/.vscode/chrome-producer",
+            "runtimeArgs": ["--incognito"]
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Both Projects",
+            "configurations": ["Launch Consumer", "Launch Producer", "Launch Chrome Incognito - Consumer", "Launch Chrome Incognito - Producer"]
+        }
+    ]
+}
