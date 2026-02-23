@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Consumer.WebApp/Consumer.WebApp.csproj" />
   <Project Path="Producer.WebApp/Producer.WebApp.csproj" />
 </Solution>
