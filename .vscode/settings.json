@@ -1,3 +1,7 @@
 {
-    "dotnet.defaultSolution": "Producer.slnx"
+    "dotnet.defaultSolution": "Producer.slnx",
+    "files.exclude": {
+    "**/bin": true,
+    "**/obj": true
+  }
 }
