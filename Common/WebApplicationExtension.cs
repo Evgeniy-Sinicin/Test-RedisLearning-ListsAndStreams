@@ -18,6 +18,7 @@ public static class WebApplicationExtension
             builder.Services.AddControllers();
             builder.Services.AddRouting();
             builder.Services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(appOptions.Redis.Address));
+            builder.Services.AddSingleton<RedisService>();
 
             var app = builder.Build();
             app.MapControllers();

@@ -18,5 +18,6 @@ public class AppOptions
         public const string SectionName = "Redis";
 
         public required string Address { get; init; }
+        public required string ListKey { get; init; }
     }
 }

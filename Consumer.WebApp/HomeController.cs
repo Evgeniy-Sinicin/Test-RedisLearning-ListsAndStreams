@@ -1,12 +1,10 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
-public class HomeController : ControllerBase
+public class HomeController(IOptions<AppOptions> appOptions, RedisService redisService) : ControllerBase
 {
     public IActionResult Index() => Ok("Consumer");
 
-    public IActionResult Dequeue()
-    {
-        return Ok(nameof(Dequeue));
-    }
+    public async Task<IActionResult> Dequeue() => Ok(await redisService.PopFromListAsync(appOptions.Value.Redis.ListKey));
 }
