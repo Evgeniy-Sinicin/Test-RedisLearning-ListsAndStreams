@@ -7,10 +7,7 @@
             "request": "launch",
             "preLaunchTask": "build Consumer",
             "program": "${workspaceFolder}/Consumer.WebApp/bin/Debug/net10.0/Consumer.WebApp.dll",
-            "cwd": "${workspaceFolder}/Consumer.WebApp",
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            }
+            "cwd": "${workspaceFolder}/Consumer.WebApp"
         },
         {
             "name": "Launch Producer",
@@ -18,10 +15,7 @@
             "request": "launch",
             "preLaunchTask": "build Producer",
             "program": "${workspaceFolder}/Producer.WebApp/bin/Debug/net10.0/Producer.WebApp.dll",
-            "cwd": "${workspaceFolder}/Producer.WebApp",
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            }
+            "cwd": "${workspaceFolder}/Producer.WebApp"
         },
         {
             "name": "Launch Chrome Incognito - Consumer",
@@ -44,8 +38,12 @@
     ],
     "compounds": [
         {
-            "name": "Launch Both Projects",
+            "name": "Launch Both Projects Incognito",
             "configurations": ["Launch Consumer", "Launch Producer", "Launch Chrome Incognito - Consumer", "Launch Chrome Incognito - Producer"]
+        },
+        {
+            "name": "Launch Both Projects",
+            "configurations": ["Launch Consumer", "Launch Producer"]
         }
     ]
 }

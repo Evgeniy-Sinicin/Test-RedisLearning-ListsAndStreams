@@ -17,7 +17,7 @@ public static class WebApplicationExtension
             var app = builder.Build();
             var routing = app.Services.GetRequiredService<IOptions<RoutingOptions>>().Value;
             app.MapControllers();
-            app.MapControllerRoute(routing.Name, routing.Pattern);
+            app.MapControllerRoute(routing.Name, routing.Pattern, new { controller = routing.Controller });
             app.Run();
         }
     }

@@ -4,4 +4,5 @@ public class RoutingOptions
 
     public required string Name { get; set; }
     public required string Pattern { get; set; }
+    public required string Controller { get; set; }
 }
