@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
+using StackExchange.Redis;
 
 public static class WebApplicationExtension
 {
@@ -10,14 +11,17 @@ public static class WebApplicationExtension
         {
             var builderOptions = new WebApplicationOptions{ ContentRootPath = AppDomain.CurrentDomain.BaseDirectory };
             var builder = WebApplication.CreateBuilder(builderOptions);
+            
+            builder.Services.Configure<AppOptions>(builder.Configuration);
+            var appOptions = builder.Configuration.Get<AppOptions>()!;
+
             builder.Services.AddControllers();
             builder.Services.AddRouting();
-            builder.Services.Configure<RoutingOptions>(builder.Configuration.GetSection(RoutingOptions.SectionName));
+            builder.Services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(appOptions.Redis.Address));
 
             var app = builder.Build();
-            var routing = app.Services.GetRequiredService<IOptions<RoutingOptions>>().Value;
             app.MapControllers();
-            app.MapControllerRoute(routing.Name, routing.Pattern, new { controller = routing.Controller });
+            app.MapControllerRoute(appOptions.Routing.Name, appOptions.Routing.Pattern, appOptions.Routing.Defaults);
             app.Run();
         }
     }
