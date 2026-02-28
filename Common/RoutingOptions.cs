@@ -1,4 +1,4 @@
-class RoutingOptions
+public class RoutingOptions
 {
     public const string SectionName = "Routing";
 
